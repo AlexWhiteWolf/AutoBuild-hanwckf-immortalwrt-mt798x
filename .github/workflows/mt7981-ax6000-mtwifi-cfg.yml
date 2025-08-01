@@ -14,7 +14,7 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
-  CONFIG_FILE: mt7986-ax6000.config
+  CONFIG_FILE: mt7986-ax4200.config
 
 jobs:
   build:
