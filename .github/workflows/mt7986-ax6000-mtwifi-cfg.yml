@@ -1,4 +1,4 @@
-name: mt7981-ax6000-mtwifi-cfg 闭源固件
+name: mt7986-ax6000-mtwifi-cfg 闭源固件
 
 #permissions: write-all
 #开启写权限，防止无法上传到release
@@ -18,7 +18,7 @@ env:
 
 jobs:
   build:
-    name: 编译mt7981-ax6000-mtwifi-cfg固件
+    name: 编译mt7986-ax6000-mtwifi-cfg固件
     runs-on: ubuntu-22.04
 
     steps:
@@ -111,7 +111,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: env.UPLOAD_FIRMWARE == 'true' && steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: mt7981-ax3000-mtwifi-cfg
+        name: mt7986-ax6000-mtwifi-cfg
         path: ${{ env.FIRMWARE }}
 
     - name: 生成release标签
