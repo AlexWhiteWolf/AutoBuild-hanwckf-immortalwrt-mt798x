@@ -1,4 +1,4 @@
-name: mt7986-ax6000-mtwifi-cfg 闭源固件
+name: mt7986-ax4200-mtwifi-cfg 闭源固件
 
 #permissions: write-all
 #开启写权限，防止无法上传到release
@@ -22,7 +22,7 @@ env:
 
 jobs:
   build:
-    name: 编译mt7986-ax6000-mtwifi-cfg固件
+    name: 编译mt7986-ax4200-mtwifi-cfg固件
     runs-on: ubuntu-22.04
 
     steps:
@@ -69,15 +69,15 @@ jobs:
         
     - name: 自定义 & 更新 & 安装 feeds
       run: |
-        chmod +x diy-feeds.sh
+        chmod +x diy-part2.sh
         cd openwrt
-        $GITHUB_WORKSPACE/diy-feeds.sh
+        $GITHUB_WORKSPACE/diy-part2.sh
 
     - name: 自定义.config设置
       run: |
-        chmod +x diy-config.sh
+        chmod +x diy-part1.sh
         cd openwrt
-        $GITHUB_WORKSPACE/diy-config.sh
+        $GITHUB_WORKSPACE/diy-part1.sh
         
     - name: 下载软件包
       id: package
@@ -122,9 +122,9 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && steps.compile.outputs.status == 'success' && !cancelled()
       run: |
-        echo "release_tag=$(date +"%Y.%m.%d-%H%M")-ax6000-mtwifi-cfg">> $GITHUB_OUTPUT
+        echo "release_tag=$(date +"%Y.%m.%d-%H%M")-ax4200-mtwifi-cfg">> $GITHUB_OUTPUT
         touch release.txt
-        echo -e "immortalwrt-mt798x-ax6000-mtwifi-cfg 源码版本" >> release.txt
+        echo -e "immortalwrt-mt798x-ax4200-mtwifi-cfg 源码版本" >> release.txt
         echo "📥 固件下载" >> release.txt
         echo "status=success" >>$GITHUB_OUTPUT
 
